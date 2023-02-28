@@ -1,0 +1,19 @@
+# gitignore
+
+#mac
+.DS_Store
+
+# python
+*.pyc
+__pycache__/
+venv/
+
+# blog 
+instance/
+.pytest_cache/
+.coverage
+htmlcov/
+toys/
+dist/
+build/
+*.egg-info/

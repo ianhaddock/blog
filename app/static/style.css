@@ -1,0 +1,265 @@
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #e7f1f7;
+  padding: 0 1rem;
+}
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  background: white;
+}
+
+.footer {
+  color: slategray;
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%), #e7f1f7; 
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Garamond", "Times New Roman", serif;
+  color: #163143;
+  margin: 1rem 0;
+}
+
+a {
+  color: #346d9e;
+}
+
+a img:last-child {
+  display: none;
+}
+
+a:hover img:last-child {
+  display: block;
+}
+
+a:hover img:first-child {
+  display: none;
+}
+
+
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+.topimage {
+  height: auto;
+  display: flex;
+  margin: auto 0;
+  transition: 0.5s; 
+}
+
+.topimage img {
+    width: 100%;
+    height: auto;
+}
+
+.topimage:hover {
+  opacity: 0.9;
+  transition: 1.5s;
+}  
+
+
+nav {
+  position: sticky; 
+  top: 0;
+  background-color: #377ba8; 
+  display: flex; 
+  align-items: center;
+  list-style: none;  
+  height: 3rem;
+  transition: 0.5s;
+  opacity: 0.85;
+}
+
+nav:hover {
+    opacity: 1;
+    transition: 1.5s;
+}
+
+nav h1 {
+  flex: auto;
+  margin: 0;
+}
+
+nav h1 a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  color: white; 
+}
+
+nav ul  {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a, nav ul li span, header .action {
+  display: block;
+  padding: 0.5rem;
+}
+
+
+blog_nav {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+}
+
+blog_nav h1 {
+  flex: auto;
+  margin: 0;
+}
+
+blog_nav h1 a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+blog_nav ul  {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+blog_nav ul li a, blog_nav ul li span, header .action {
+  display: block;
+  padding: 0.5rem;
+}
+
+.content {
+  padding: 0 1rem 1rem;
+}
+
+.content > header {
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: flex-end;
+}
+
+.content > header h1 {
+  flex: auto;
+  margin: 1rem 0 0.25rem;
+}
+
+.flash .info {
+  margin: 1em 0;
+  padding: 1em;
+  background: #cae6f6;
+  border: 1px solid #377ba8;
+}
+
+.flash .message {
+  margin: 1em 0;
+  padding: 1em;
+  background: #cae6f6;
+  border: 1px solid #377ba8;
+}
+
+.flash .error {
+  margin: 1em 0;
+  padding: 1em;
+  background: #ffbaba;
+  border: 1px solid #377ba8;
+}
+
+.post > header {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.85em;
+}
+
+.post > header > div:first-of-type {
+  flex: auto;
+}
+
+.continue {
+    font-size: 0.85em;
+}
+
+.post > header h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.post .about {
+  color: slategrey;
+  font-style: italic;
+}
+
+.post .body {
+  white-space: pre-line;
+  margin: 0 0.5em 0 0.5em; 
+}
+
+.content:last-child {
+  margin-bottom: 0;
+}
+
+.content form {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content input, .content textarea {
+  margin-bottom: 1em;
+}
+
+.content textarea {
+  min-height: 12em;
+  resize: vertical;
+}
+
+input.danger {
+  color: #cc2f2e;
+}
+
+input[type=submit] {
+  align-self: start;
+  min-width: 10em;
+}
+
+.column {
+    float: left;
+}
+
+.column .post {
+    margin: 0 1em 0 1em; 
+    line-height: 1.6;
+    color: #4C4E52;
+}
+
+.column .about {
+  color: #ABB0B8;
+  font-style: italic;
+  font-size: 0.85em; 
+  line-height: 1.2;
+}
+
+.column .action {
+    font-size: 1em;
+}     
+
+.left {
+    width: 70%;
+}
+
+.right {
+    width: 30%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
