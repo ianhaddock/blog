@@ -2,12 +2,11 @@
 gitea: none
 include_toc: true
 ---
-
 <p align="center">
   <img  width="551" height="320" src="http://gitea.ianhaddock.org/ian/blog/raw/branch/main/README_image.jpg">
 </p>
 
-## General info
+# Blog
 This is a lightweight blog app that I use for my site, [blog.ianhaddock.com][1]. 
 
 ## Technologies
