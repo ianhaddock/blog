@@ -10,6 +10,8 @@ COPY ./setup.py .
 
 COPY ./start_blog.sh .
 
+COPY ./requirements.txt .
+
 RUN chmod +x ./start_blog.sh
 
 RUN pip install --no-cache-dir -r requirements.txt
