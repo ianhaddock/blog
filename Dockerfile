@@ -2,9 +2,9 @@
 
 FROM python:3.8
 
-WORKDIR /app
+WORKDIR /blog
 
-COPY ./app .
+COPY ./app ./app
 
 COPY ./setup.py .
 
@@ -14,7 +14,7 @@ COPY ./requirements.txt .
 
 RUN chmod +x ./start_blog.sh
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir waitress -r requirements.txt
 
 EXPOSE 5000
 
