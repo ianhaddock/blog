@@ -3,8 +3,16 @@ from configparser import ConfigParser
 from werkzeug.security import generate_password_hash
 from app.db import get_db
 import os
+import random
 
 bp = Blueprint('settings', __name__)
+
+
+def pano():
+    """select random page header panorama image"""
+    custom_path = "app/static/" + app.config['panoramic_path']
+    the_pano = random.choice(os.listdir(custom_path))
+    return app.config['panoramic_path'] + the_pano
 
 
 def account_reset(settings):

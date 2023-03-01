@@ -3,6 +3,7 @@ from flask import (Blueprint, flash, g, redirect, render_template, request,
                    session, url_for, current_app as app)
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import get_db
+from app.settings import pano
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -46,7 +47,7 @@ def register():
 
         flash(error, 'error')
 
-    return render_template('auth/register.html', pano=1)
+    return render_template('auth/register.html', pano=pano())
 
 
 @bp.route('/login', methods=('GET', 'POST'))
@@ -72,7 +73,7 @@ def login():
 
         flash(error)
 
-    return render_template('auth/login.html', pano=1)
+    return render_template('auth/login.html', pano=pano())
 
 
 @bp.before_app_request
