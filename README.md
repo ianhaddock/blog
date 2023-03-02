@@ -3,7 +3,7 @@ gitea: none
 include_toc: true
 ---
 <p align="center">
-  <img  width="551" height="320" src="http://gitea.ianhaddock.org/ian/blog/raw/branch/main/README_image.jpg">
+  <img  width="551" height="320" src="http://git.ianhaddock.com/ian/blog/raw/branch/main/README_image.jpg">
 </p>
 
 # Blog
@@ -16,11 +16,22 @@ Project created with:
 * sqlite3
 
 ## Setup
-You can install this using a wheel file.
+There is a Dockerfile available:
 
 ```
-$ pip install waitress blog.3.3.whl
-$ something else here
+$ docker build ./ -n blog
+$ docker run -n blog 
+```
+
+Alternatively you can run it directly:
+
+```
+$ python -m venv venv
+$ git pull http://gitea.ianhaddock.org/ian/blog.git
+$ pip install waitress -r requirements.txt 
+$ flask app-init
+$ flask --app app init-db
+$ waitress-serve --port=8080 --call app:create_app 
 ```
 
 ## Sources
