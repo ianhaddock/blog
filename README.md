@@ -1,13 +1,9 @@
----
-gitea: none
-include_toc: true
----
 <p align="center">
-  <img  width="551" height="320" src="http://git.ianhaddock.com/ian/blog/raw/branch/main/README_image.jpg">
+  <img width="90%" height="auto" src="http://git.ianhaddock.com/ian/blog/raw/branch/main/README_image.jpg">
 </p>
 
 # Blog
-This is a lightweight blog app that I use for my site, [ianhaddock.com][1]. 
+Lightweight blog app used on my site, [ianhaddock.com][1]. 
 
 ## Uses
 * Python
@@ -35,8 +31,11 @@ $ docker run --name blog-app -v "instance:/blog/instance" -p8080:5000 -d blog-ap
 Or run it directly:
 
 ```
-# Set a virtual environment
+# create a virtual environment
 $ python -m venv venv
+
+# enable virtual environment
+$ . venv/bin/activate 
 
 # pull the latest
 $ git pull http://gitea.ianhaddock.org/ian/blog.git
@@ -45,7 +44,6 @@ $ git pull http://gitea.ianhaddock.org/ian/blog.git
 $ pip install waitress -r requirements.txt
 
 # setup 
-$ flask app-init
 $ flask --app app init-db
 
 # start 
@@ -53,7 +51,7 @@ $ waitress-serve --port=8080 --call app:create_app
 ```
 
 ## Sources
-Started with a fun [tutorial on Flask][1] and decided to contiue building. 
+Started with a [tutorial on Flask][1] and decided to continue. 
 
 
 [1]: https://blog.ianhaddock.com

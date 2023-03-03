@@ -12,7 +12,6 @@ from app.db import (
         insert_demo_post
         )
 from datetime import datetime
-import random
 from flask import current_app as app
 import glob
 import yaml
@@ -20,13 +19,6 @@ import os
 from app.settings import pano, set_settings, get_settings
 
 bp = Blueprint('blog', __name__)
-
-
-# def pano():
-#     """select random page header panorama image"""
-#     custom_path = "app/static/" + app.config['panoramic_path']
-#     the_pano = random.choice(os.listdir(custom_path))
-#     return app.config['panoramic_path'] + the_pano
 
 
 @bp.route('/')
