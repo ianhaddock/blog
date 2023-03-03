@@ -7,35 +7,53 @@ include_toc: true
 </p>
 
 # Blog
-This is a lightweight blog app that I use for my site, [blog.ianhaddock.com][1]. 
+This is a lightweight blog app that I use for my site, [ianhaddock.com][1]. 
 
-## Technologies
-Project created with:
-* Python 3.8
-* Flask n.n
+## Uses
+* Python
+* Flask
 * sqlite3
+* Markdown
 
 ## Setup
 There is a Dockerfile available:
 
 ```
-$ docker build ./ -n blog
-$ docker run -n blog 
+# pull the latest
+$ git pull http://git.ianhaddock.com/ian/blog.git
+
+# build the image
+$ docker image build ./ -t blog-app
+
+# create an instance volume
+$ mkdir ./instance 
+
+# run the image
+$ docker run --name blog-app -v "instance:/blog/instance" -p8080:5000 -d blog-app
 ```
 
-Alternatively you can run it directly:
+Or run it directly:
 
 ```
+# Set a virtual environment
 $ python -m venv venv
+
+# pull the latest
 $ git pull http://gitea.ianhaddock.org/ian/blog.git
-$ pip install waitress -r requirements.txt 
+
+# install wsgi (e.g. waitress) and requirements
+$ pip install waitress -r requirements.txt
+
+# setup 
 $ flask app-init
 $ flask --app app init-db
+
+# start 
 $ waitress-serve --port=8080 --call app:create_app 
 ```
 
 ## Sources
-Started from a cool [tutorial on Flask][1] that I enjoyed and decided to contiue building on. 
+Started with a fun [tutorial on Flask][1] and decided to contiue building. 
 
 
 [1]: https://blog.ianhaddock.com
