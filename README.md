@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="90%" height="auto" src="http://git.ianhaddock.com/ian/blog/raw/branch/main/README_image.jpg">
+  <img width="90%" height="auto" src="https://raw.githubusercontent.com/ianhaddock/blog/main/README_image.jpg">
 </p>
 
 # Blog
@@ -16,7 +16,7 @@ There is a Dockerfile available:
 
 ```
 # pull the latest
-$ git pull http://git.ianhaddock.com/ian/blog.git
+$ git pull https://github.com/ianhaddock/blog.git
 
 # build the image
 $ docker image build ./ -t blog-app
@@ -38,7 +38,7 @@ $ python -m venv venv
 $ . venv/bin/activate 
 
 # pull the latest
-$ git pull http://gitea.ianhaddock.org/ian/blog.git
+$ git pull https://github.com/ianhaddock/blog.git
 
 # install wsgi (e.g. waitress) and requirements
 $ pip install waitress -r requirements.txt
