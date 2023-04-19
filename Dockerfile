@@ -1,6 +1,6 @@
 # Dockerfile
 
-FROM python:3.8
+FROM docker.io/library/python:3.8
 
 WORKDIR /blog
 
