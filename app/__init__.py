@@ -60,6 +60,7 @@ def create_app(test_config=None):
 
     for key, value in setting.items():
         app.config[key] = value
+    app.config['register'] = setting.getboolean('register')
 
     # back to imports
     from . import db
