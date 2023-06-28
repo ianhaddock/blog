@@ -187,6 +187,9 @@ def settings():
         setting['register'] = request.form['register']
         setting['markdown_path'] = request.form['markdownpath']
         setting['panoramic_path'] = request.form['panoramics']
+        setting['use_copy_date_start'] = request.form['use_copy_date_start']
+        setting['copy_date_start'] = request.form['copy_date_start']
+        setting['copy_date_end'] = request.form['copy_date_end']
 
         set_settings(settings)
 

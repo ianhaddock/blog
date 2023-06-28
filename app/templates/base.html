@@ -48,10 +48,14 @@
             <hr width="80%">
             <div align="center">
                 {% block footer %}{% endblock footer %} 
-                <p>&copy; 2023 {{ config.blog_name }}</br>
-                <br>
-                </p>
-                 
+                    <p>
+                    {% if config.use_copy_date_start %}
+                        &copy; {{ config.copy_date_start }} - {{ config.copy_date_end }} {{ config.blog_name }}<br>
+                    {% else %}
+                        &copy; {{ config.copy_date_end }} {{ config.blog_name }}<br>
+                    {% endif %}
+                    <br>
+                    </p>
             </div> 
         </section>
     </body>

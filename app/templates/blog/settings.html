@@ -38,6 +38,15 @@
         <label for="panoramics">Panoramics Path</label>
         <input type="panoramics" name="panoramics" id="panoramics" value="{{ config.panoramic_path }}" required="True">
 
+        <label for="use_copy_date_start">Enable Copyright Start Date</label>
+        <input type="use_copy_date_start" name="use_copy_date_start" id="use_copy_date_start" value="{{ config.use_copy_date_start }}" required="True">
+
+        <label for="copy_date_start">Copyright Start Date</label>
+        <input type="copy_date_start" name="copy_date_start" id="copy_date_start" value="{{ config.copy_date_start }}" required="True">
+
+        <label for="copy_date_end">Copyright End Date</label>
+        <input type="copy_date_end" name="copy_date_end" id="copy_date_end" value="{{ config.copy_date_end }}" required="True">
+        
         <input type="submit" value="Update">
     </form>
 {% endblock content %}

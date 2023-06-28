@@ -54,6 +54,7 @@ def get_settings(settings_file='instance/settings.ini'):
     for key, value in setting.items():
         app.config[key] = value
     app.config['register'] = setting.getboolean('register')
+    app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
 
     return settings
 

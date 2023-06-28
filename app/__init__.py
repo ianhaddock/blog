@@ -43,9 +43,12 @@ def create_app(test_config=None):
                 'user_icon': 'custom/user_icon-64px.png',
                 'github_url': 'https://github.com',
                 'linkedin_url': 'https://www.linkedin.com',
-                'register': 'True',
+                'register': 'true',
                 'markdown_path': 'custom/markdown/',
-                'panoramic_path': 'custom/pano/'
+                'panoramic_path': 'custom/pano/',
+                'use_copy_date_start': 'false',
+                'copy_date_start': 2023,
+                'copy_date_end': 2023
                 }
         settings['admin_reset'] = {
                 'username': 'account_name_to_reset',
@@ -61,6 +64,7 @@ def create_app(test_config=None):
     for key, value in setting.items():
         app.config[key] = value
     app.config['register'] = setting.getboolean('register')
+    app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
 
     # back to imports
     from . import db
