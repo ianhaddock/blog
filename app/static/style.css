@@ -73,7 +73,7 @@ nav {
   display: flex; 
   align-items: center;
   list-style: none;  
-  height: 3rem;
+  height: 3.6rem;
   transition: 0.5s;
   opacity: 0.85;
 }

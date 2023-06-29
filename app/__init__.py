@@ -40,7 +40,9 @@ def create_app(test_config=None):
         settings['settings'] = {
                 'blog_name': 'blog.example.com',
                 'contact_email': 'test@example.com',
-                'user_icon': 'custom/user_icon-64px.png',
+                'usericon_mouseover_enable': 'True',
+                'usericon': 'custom/usericon-dark-48px.png',
+                'usericon_mouseover': 'custom/usericon-light-48px.png',
                 'github_url': 'https://github.com',
                 'linkedin_url': 'https://www.linkedin.com',
                 'register': 'true',
@@ -65,6 +67,7 @@ def create_app(test_config=None):
         app.config[key] = value
     app.config['register'] = setting.getboolean('register')
     app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
+    app.config['usericon_mouseover_enable'] = setting.getboolean('usericon_mouseover_enable')
 
     # back to imports
     from . import db

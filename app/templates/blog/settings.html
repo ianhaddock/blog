@@ -29,8 +29,14 @@
            To add custom files, add them into the static directory and reference them here.
         </p>
 
+        <label for="usericon_mouseover_enable">Enable User Icon Mouseover</label>
+        <input type="usericon_mouseover_enable" name="usericon_mouseover_enable" id="usericon_mouseover_enable" value="{{ config.usericon_mouseover_enable }}" required="True">
+
         <label for="usericon">User Icon</label>
-        <input type="usericon" name="usericon" id="usericon" value="{{ config.user_icon }}" required="True">
+        <input type="usericon" name="usericon" id="usericon" value="{{ config.usericon }}" required="True">
+
+        <label for="usericon_mouseover">User Icon Mouseover</label>
+        <input type="usericon_mouseover" name="usericon_mouseover" id="usericon_mouseover" value="{{ config.usericon_mouseover }}" required="True">
 
         <label for="markdownpath">Markdown Path</label>
         <input name="markdownpath" id="markdownpath" value="{{ config.markdown_path }}" required="True">

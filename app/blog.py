@@ -181,7 +181,9 @@ def settings():
     if request.method == 'POST':
         setting['blog_name'] = request.form['blogname']
         setting['contact_email'] = request.form['contactemail']
-        setting['user_icon'] = request.form['usericon']
+        setting['usericon'] = request.form['usericon']
+        setting['usericon_mouseover'] = request.form['usericon_mouseover']
+        setting['usericon_mouseover_enable'] = request.form['usericon_mouseover_enable']
         setting['github_url'] = request.form['githuburl']
         setting['linkedin_url'] = request.form['linkedinurl']
         setting['register'] = request.form['register']
