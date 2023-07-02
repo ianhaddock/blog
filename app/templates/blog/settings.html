@@ -7,19 +7,19 @@
 {% block content %}
     <form method="post">
         <label for="blogname">Blog Name</label>
-        <input type="blogname" name="blogname" id="blogname" value="{{ config.blog_name }}" required="True">
+        <input type="text" name="blogname" id="blogname" value="{{ config.blog_name }}" required="True">
 
         <label for="contactemail">Contact Email</label>
-        <input type="contactemail" name="contactemail" id="contactemail" value="{{ config.contact_email }}" required="True">
+        <input type="text" name="contactemail" id="contactemail" value="{{ config.contact_email }}" required="True">
 
         <label for="githuburl">GitHub URL</label>
-        <input name="githuburl" id="githuburl" value="{{ config.github_url }}" required="True">
+        <input ty[e="text" name="githuburl" id="githuburl" value="{{ config.github_url }}" required="True">
 
         <label for="linkedinurl">LinkedIn URL</label>
-        <input type="linkedinurl" name="linkedinurl" id="linkedinurl" value="{{ config.linkedin_url }}" required="True">
+        <input type="text" name="linkedinurl" id="linkedinurl" value="{{ config.linkedin_url }}" required="True">
 
-        <label for="register">Enable Register</label>
-        <input type="register" name="register" id="register" value="{{ config.register }}" required="True">
+       <label for="register">Enable Register</label>
+       <input type="text" name="register" id="register" value="{{ config.register }}" required="True">
 
         <h2>
             Customise

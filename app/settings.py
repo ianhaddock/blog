@@ -53,9 +53,6 @@ def get_settings(settings_file='instance/settings.ini'):
 
     for key, value in setting.items():
         app.config[key] = value
-    app.config['register'] = setting.getboolean('register')
-    app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
-    app.config['usericon_mouseover_enable'] = setting.getboolean('usericon_mouseover_enable')
 
     return settings
 
@@ -65,23 +62,20 @@ def set_settings(settings, settings_file='instance/settings.ini'):
 
     try:
         app.config['register'] = settings['settings'].getboolean('register')
-
     except Exception:
-        flash('reigser is not a boolean', 'error')
+        flash('Enable Register must be True or False', 'error')
         return
 
     try:
         app.config['use_copy_date_start'] = settings['settings'].getboolean('use_copy_date_start')
-
     except Exception:
-        flash('use copyright start date is not a boolean', 'error')
+        flash('Use Copyright Start Date must be True or False', 'error')
         return
 
     try:
         app.config['usericon_mouseover_enable'] = settings['settings'].getboolean('usericon_mouseover_enable')
-
     except Exception:
-        flash('user icon mouseover is not a boolean', 'error')
+        flash('User Icon Mouseover must be True or False', 'error')
         return
 
     with open(os.path.join(app.instance_path, 'settings.ini'), 'w') as setting:
