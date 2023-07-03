@@ -1,6 +1,6 @@
 # gitignore
 
-#mac
+# macOS
 .DS_Store
 
 # python
@@ -8,12 +8,17 @@
 __pycache__/
 venv/
 
-# blog 
+# flask build 
 instance/
 .pytest_cache/
 .coverage
 htmlcov/
-toys/
-dist/
 build/
 *.egg-info/
+
+# tests
+toys/
+
+# my blog files
+dist/
+
