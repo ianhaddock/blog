@@ -50,8 +50,8 @@ def create_app(test_config=None):
                 'markdown_path': 'custom/markdown/',
                 'panoramic_path': 'custom/pano/',
                 'use_copy_date_start': 'false',
-                'copy_date_start': 2023,
-                'copy_date_end': 2023
+                'copy_date_start': 2024,
+                'copy_date_end': 2024
                 }
         settings['admin_reset'] = {
                 'username': 'account_name_to_reset',
