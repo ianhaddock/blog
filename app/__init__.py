@@ -43,6 +43,7 @@ def create_app(test_config=None):
                 'usericon_mouseover_enable': 'True',
                 'usericon': 'custom/usericon-dark-48px.png',
                 'usericon_mouseover': 'custom/usericon-light-48px.png',
+                'favicon': 'custom/favicon.ico',
                 'github_url': 'https://github.com',
                 'linkedin_url': 'https://www.linkedin.com',
                 'register': 'true',
