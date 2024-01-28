@@ -184,6 +184,7 @@ def settings():
         setting['usericon'] = request.form['usericon']
         setting['usericon_mouseover'] = request.form['usericon_mouseover']
         setting['usericon_mouseover_enable'] = request.form['usericon_mouseover_enable']
+        setting['favicon'] = request.form['favicon']
         setting['github_url'] = request.form['githuburl']
         setting['linkedin_url'] = request.form['linkedinurl']
         setting['register'] = request.form['register']
