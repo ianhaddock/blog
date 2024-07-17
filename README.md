@@ -4,7 +4,7 @@
 Lightweight blog app used on my site, [ianhaddock.com][1]. 
 
 <p align="center">
-  <img width="90%" height="auto" src="https://raw.githubusercontent.com/ianhaddock/blog/main/README_image.jpg">
+  <img width="90%" height="auto" src="readme.jpg">
 </p>
 
 ## Uses
@@ -14,23 +14,18 @@ Lightweight blog app used on my site, [ianhaddock.com][1].
 * Markdown
 
 ## Setup
-There is a Dockerfile available:
+Run the docker image:
 
 ```
-# pull the latest
-$ git pull https://github.com/ianhaddock/blog.git
-
-# build the image
-$ docker image build ./ -t blog-app
-
-# create an instance volume
-$ mkdir ./instance 
-
-# run the image
-$ docker run --name blog-app -v "instance:/blog/instance" -p8080:5000 -d blog-app
+docker run \
+  -d \
+  --name blog-app \
+  -v "instance:/blog/instance" \
+  -p 8080:5000 
+  ghcr.io/ianhaddock/blog:latest
 ```
 
-Or run it directly:
+Or run directly:
 
 ```
 # create a virtual environment
