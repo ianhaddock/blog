@@ -21,7 +21,7 @@ docker run \
   -d \
   --name blog-app \
   -v "instance:/blog/instance" \
-  -p 8080:5000 
+  -p 8080:5000 \
   ghcr.io/ianhaddock/blog:latest
 ```
 
