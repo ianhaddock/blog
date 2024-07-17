@@ -1,9 +1,11 @@
-<p align="center">
-  <img width="90%" height="auto" src="https://raw.githubusercontent.com/ianhaddock/blog/main/README_image.jpg">
-</p>
+[![Docker Image CI](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml)
 
 # Blog
 Lightweight blog app used on my site, [ianhaddock.com][1]. 
+
+<p align="center">
+  <img width="90%" height="auto" src="https://raw.githubusercontent.com/ianhaddock/blog/main/README_image.jpg">
+</p>
 
 ## Uses
 * Python
