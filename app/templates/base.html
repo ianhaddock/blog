@@ -10,14 +10,14 @@
     <body>
         <div class="topimage">
             <img src="/static/{{ pano }}" alt="panoramic vista view">
-        </div>    
+        </div>
 
         <nav>
             {% if config.usericon_mouseover_enable %}
                 <a href="{{ url_for('blog.index') }}">
                     <img src="/static/{{ config.usericon }}" style="padding:0px 0px 0px 6px;width:48px;height:48px;" alt="site icon">
                     <img src="/static/{{ config.usericon_mouseover }}" style="padding:0px 0px 0px 6px;width:48px;height:48px;" alt="site icon">
-                </a>    
+                </a>
             {% else %}
                 <img src="/static/{{ config.usericon }}" style="padding:0px 0px 0px 6px;width:48px;height:48px;" alt="site icon">
             {% endif %}
@@ -35,7 +35,7 @@
                         <img src="/static/email-Light-32px.png" title="email Me" alt="My email"></a></li>
             </ul>
         </nav>
-    
+
         <section class="content">
             <header>
                 {% block header %}{% endblock header %}
@@ -48,15 +48,15 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            {% endwith %}        
-        
+            {% endwith %}
+
             {% block content %}{% endblock content %}
         </section>
-    
+
         <section class="footer">
             <hr width="80%">
             <div align="center">
-                {% block footer %}{% endblock footer %} 
+                {% block footer %}{% endblock footer %}
                     <p>
                     {% if config.use_copy_date_start %}
                         &copy; {{ config.copy_date_start }} - {{ config.copy_date_end }} {{ config.blog_name }}<br>
@@ -65,7 +65,7 @@
                     {% endif %}
                     <br>
                     </p>
-            </div> 
+            </div>
         </section>
     </body>
-</html>    
+</html>

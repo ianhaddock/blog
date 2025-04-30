@@ -16,7 +16,7 @@ code {
 
 .footer {
   color: slategray;
-  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%), #e7f1f7; 
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%), #e7f1f7;
 }
 
 
@@ -52,7 +52,7 @@ hr {
   height: auto;
   display: flex;
   margin: auto 0;
-  transition: 0.5s; 
+  transition: 0.5s;
 }
 
 .topimage img {
@@ -63,16 +63,16 @@ hr {
 .topimage:hover {
   opacity: 0.9;
   transition: 1.5s;
-}  
+}
 
 
 nav {
-  position: sticky; 
+  position: sticky;
   top: 0;
-  background-color: #377ba8; 
-  display: flex; 
+  background-color: #377ba8;
+  display: flex;
   align-items: center;
-  list-style: none;  
+  list-style: none;
   height: 3.6rem;
   transition: 0.5s;
   opacity: 0.85;
@@ -91,7 +91,7 @@ nav h1 {
 nav h1 a {
   text-decoration: none;
   padding: 0.25rem 0.5rem;
-  color: white; 
+  color: white;
 }
 
 nav ul  {
@@ -197,7 +197,7 @@ blog_nav ul li a, blog_nav ul li span, header .action {
 
 .post .body {
   white-space: pre-line;
-  margin: 0 0.5em 0 0.5em; 
+  margin: 0 0.5em 0 0.5em;
 }
 
 .content:last-child {
@@ -238,7 +238,7 @@ input[type=submit] {
 }
 
 .column .post {
-    margin: 0 1em 0 1em; 
+    margin: 0 1em 0 1em;
     line-height: 1.6;
     color: #4C4E52;
 }
@@ -246,13 +246,13 @@ input[type=submit] {
 .column .about {
   color: #ABB0B8;
   font-style: italic;
-  font-size: 0.85em; 
+  font-size: 0.85em;
   line-height: 1.2;
 }
 
 .column .action {
     font-size: 1em;
-}     
+}
 
 .left {
     width: 70%;
