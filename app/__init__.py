@@ -1,3 +1,5 @@
+""" __init__.py """
+
 import os
 from configparser import ConfigParser
 from flask import Flask
@@ -5,7 +7,7 @@ from flaskext.markdown import Markdown
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    """ create and configure the app """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
             SECRET_KEY='dev',
@@ -46,7 +48,7 @@ def create_app(test_config=None):
                 'favicon': 'custom/favicon.ico',
                 'github_url': 'https://github.com',
                 'linkedin_url': 'https://www.linkedin.com',
-                'register': 'true',
+                'register': 'False',
                 'markdown_path': 'custom/markdown/',
                 'panoramic_path': 'custom/pano/',
                 'use_copy_date_start': 'false',

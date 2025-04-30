@@ -1,22 +1,36 @@
-# blog site
-# used palletsprojects.com flask tutorial
-# started Nov 2022
+""" Blog site, started with palletsprojects.com flask tutorial. Nov 2022"""
 
+import os
+from datetime import datetime
+import glob
+import yaml
+from flask import current_app as app
 from flask import (
-        Blueprint, flash, g, redirect, render_template, request, url_for
+        Blueprint,
+        flash,
+        g,
+        redirect,
+        render_template,
+        request,
+        url_for
         )
 from werkzeug.exceptions import abort
 from app.auth import login_required
 from app.db import (
-        get_db, reorder_posts, drop_posts, load_db, get_user_ids, get_titles,
+        get_db,
+        reorder_posts,
+        drop_posts,
+        load_db,
+        get_user_ids,
+        get_titles,
         insert_demo_post
         )
-from datetime import datetime
-from flask import current_app as app
-import glob
-import yaml
-import os
-from app.settings import pano, set_settings, get_settings
+from app.settings import (
+        pano,
+        set_settings,
+        get_settings
+        )
+
 
 bp = Blueprint('blog', __name__)
 
@@ -69,6 +83,7 @@ def index(id=None):
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+    """ create new entry page """
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
@@ -112,7 +127,7 @@ def get_posts(id, next_id, check_author=True):
                 ' ORDER BY created DESC', (next_id, id)
                 ).fetchall()
 
-    return (posts)
+    return posts
 
 
 def get_post(id, check_author=True):
@@ -129,12 +144,13 @@ def get_post(id, check_author=True):
     if check_author and post['author_id'] != g.user['id']:
         abort(403)
 
-    return (post)
+    return post
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
+    """ edit an existing post and update """
     post = get_post(id)
 
     if request.method == 'POST':
@@ -162,6 +178,7 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
+    """ delete a post """
     get_post(id)
     db = get_db()
     db.execute('DELETE FROM post WHERE id = ?', (id,))
@@ -226,8 +243,8 @@ def reload_markdown():
     drop_posts()
 
     for file in glob.glob(path + '*.md'):
-        with open(file, 'r', encoding='utf-8') as theFile:
-            content = theFile.read()
+        with open(file, 'r', encoding='utf-8') as f:
+            content = f.read()
 
             try:
                 tags, content = content.split('---\n')
