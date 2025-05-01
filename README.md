@@ -1,3 +1,4 @@
+[![.github/workflows/ci.yml](https://github.com/ianhaddock/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/ci.yml)
 [![Docker Image CI](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml)
 
 # Blog
@@ -12,9 +13,15 @@ Lightweight blog app used on my site, [ianhaddock.com][1].
 * Flask
 * sqlite3
 * Markdown
+* Docker
 * Pylint
 
 ## Setup
+Docker compose file included:
+```
+docker compose up
+```
+
 Run the docker image:
 
 ```
