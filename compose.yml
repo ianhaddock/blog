@@ -1,0 +1,14 @@
+# Docker compose file
+---
+services:
+  blog:
+    build: .
+    ports:
+      - "8080:5000"
+    volumes:
+      - ./dist/custom:/blog/app/static/custom
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /blog

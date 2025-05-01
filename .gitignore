@@ -8,7 +8,7 @@
 __pycache__/
 venv/
 
-# flask build 
+# flask build
 instance/
 .pytest_cache/
 .coverage
@@ -21,4 +21,3 @@ toys/
 
 # my blog files
 dist/
-

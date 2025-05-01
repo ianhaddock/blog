@@ -1,3 +1,5 @@
+""" pytest conftest.py for blog """
+
 import os
 import tempfile
 

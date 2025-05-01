@@ -1,11 +1,14 @@
+""" __init__.py """
+
 import os
 from configparser import ConfigParser
 from flask import Flask
 from flaskext.markdown import Markdown
 
 
+# Disable import outside toplevel warning - pylint: disable=C0415
 def create_app(test_config=None):
-    # create and configure the app
+    """ create and configure the app """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
             SECRET_KEY='dev',
@@ -46,7 +49,7 @@ def create_app(test_config=None):
                 'favicon': 'custom/favicon.ico',
                 'github_url': 'https://github.com',
                 'linkedin_url': 'https://www.linkedin.com',
-                'register': 'true',
+                'register': 'False',
                 'markdown_path': 'custom/markdown/',
                 'panoramic_path': 'custom/pano/',
                 'use_copy_date_start': 'false',
@@ -57,7 +60,8 @@ def create_app(test_config=None):
                 'username': 'account_name_to_reset',
                 'password': 'new_account_password'
                 }
-        settings.write(open(app.config.settings_file, 'w'))
+        with open(app.config.settings_file, 'w', encoding='utf-8') as f:
+            settings.write(f)
 
     settings.read(app.config.settings_file)
 
@@ -65,10 +69,18 @@ def create_app(test_config=None):
     setting = settings['settings']
 
     for key, value in setting.items():
-        app.config[key] = value
-    app.config['register'] = setting.getboolean('register')
-    app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
-    app.config['usericon_mouseover_enable'] = setting.getboolean('usericon_mouseover_enable')
+        if key == 'register':
+            app.config['register'] = setting.getboolean('register')
+        elif key == 'use_copy_date_start':
+            app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
+        elif key == 'usericon_mouseover_enable':
+            mouseover_enable_status = settings['settings'].getboolean('usericon_mouseover_enable')
+            app.config['usericon_mouseover_enable'] = mouseover_enable_status
+        else:
+            app.config[key] = value
+
+
+
 
     # back to imports
     from . import db

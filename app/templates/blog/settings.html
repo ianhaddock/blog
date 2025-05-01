@@ -2,7 +2,7 @@
 
 {% block header %}
     <h1>{% block title %}Settings{% endblock %}</h1>
-{% endblock header %} 
+{% endblock header %}
 
 {% block content %}
     <form method="post">
@@ -55,8 +55,7 @@
 
         <label for="copy_date_end">Copyright End Date</label>
         <input type="copy_date_end" name="copy_date_end" id="copy_date_end" value="{{ config.copy_date_end }}" required="True">
-        
+
         <input type="submit" value="Update">
     </form>
 {% endblock content %}
-

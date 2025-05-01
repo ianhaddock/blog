@@ -2,7 +2,7 @@
 
 {% block header %}
     <h1>{% block title %}New Post{% endblock title %}</h1>
-{%endblock header %} 
+{%endblock header %}
 
 {% block content %}
     <form method="post">
@@ -11,6 +11,5 @@
         <label for="body">Body</label>
         <textarea name="body" id="body" rows="14">{{ request.form['body'] }}</textarea>
         <input type="submit" value="Save">
-    </form>    
-{% endblock content %}  
-
+    </form>
+{% endblock content %}
