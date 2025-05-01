@@ -1,4 +1,4 @@
-""" Blog site, started with palletsprojects.com flask tutorial. Nov 2022"""
+""" Blog blog.py. Started with palletsprojects.com flask tutorial. Nov 2022"""
 
 import os
 from datetime import datetime
@@ -37,7 +37,7 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 @bp.route('/<int:id>')
-def index(id=None):
+def index(post_id=int | None):
     """presents newest post in long form, the next most recent suggested
     below, with a list of all posts on the right"""
 
@@ -56,16 +56,16 @@ def index(id=None):
         return redirect(url_for('blog.index'))
 
     # show latest post if id is invalid
-    if not id or id > count:
-        id = count
+    if not post_id or post_id > count:
+        post_id = count
 
-    next_id = id - 1
+    next_id = post_id - 1
 
     # suggest most recent post below post 1
-    if id == 1:
+    if post_id == 1:
         next_id = count
 
-    posts = get_posts(id, next_id, False)
+    posts = get_posts(post_id, next_id)
 
     # show only the demo post if this is a new install
     if posts == 1:
@@ -107,16 +107,16 @@ def create():
     return render_template('blog/create.html', pano=pano())
 
 
-def get_posts(id, next_id, check_author=True):
+def get_posts(post_id, next_id):
     """get the main and secondary post for index page"""
 
     # if viewing the first post, show the most recent as the suggested
-    if id == 1:
+    if post_id == 1:
         posts = get_db().execute(
                 'SELECT p.id, title, body, created, author_id, username'
                 ' FROM post p JOIN user u ON p.author_id = u.id'
                 ' WHERE p.id = ? OR p.id = ?'
-                ' ORDER BY created ASC', (next_id, id)
+                ' ORDER BY created ASC', (next_id, post_id)
                 ).fetchall()
 
     else:
@@ -124,18 +124,18 @@ def get_posts(id, next_id, check_author=True):
                 'SELECT p.id, title, body, created, author_id, username'
                 ' FROM post p JOIN user u ON p.author_id = u.id'
                 ' WHERE p.id = ? OR p.id = ?'
-                ' ORDER BY created DESC', (next_id, id)
+                ' ORDER BY created DESC', (next_id, post_id)
                 ).fetchall()
 
     return posts
 
 
-def get_post(id, check_author=True):
+def get_post(post_id, check_author=True):
     """get a single post for editing"""
     post = get_db().execute(
             'SELECT p.id, title, body, created, author_id, username'
             ' FROM post p JOIN user u ON p.author_id = u.id'
-            ' WHERE p.id = ?', (id,)
+            ' WHERE p.id = ?', (post_id,)
             ).fetchone()
 
     if post is None:
@@ -149,9 +149,9 @@ def get_post(id, check_author=True):
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
-def update(id):
+def update(post_id):
     """ edit an existing post and update """
-    post = get_post(id)
+    post = get_post(post_id)
 
     if request.method == 'POST':
         title = request.form['title']
@@ -167,21 +167,21 @@ def update(id):
             db = get_db()
             db.execute(
                 'UPDATE post SET title = ?, body = ? WHERE id = ?',
-                (title, body, id)
+                (title, body, post_id)
                 )
             db.commit()
-            return redirect(url_for('blog.index', id=id))
+            return redirect(url_for('blog.index'), post_id)
 
     return render_template('blog/update.html', post=post, pano=pano())
 
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
-def delete(id):
+def delete(post_id):
     """ delete a post """
-    get_post(id)
+    get_post(post_id)
     db = get_db()
-    db.execute('DELETE FROM post WHERE id = ?', (id,))
+    db.execute('DELETE FROM post WHERE id = ?', (post_id,))
     db.commit()
     reorder_posts()
     return redirect(url_for('blog.index'))
@@ -192,8 +192,8 @@ def delete(id):
 def settings():
     """load and edit settings in config.py file"""
 
-    settings = get_settings()
-    setting = settings['settings']
+    s = get_settings()
+    setting = s['settings']
 
     if request.method == 'POST':
         setting['blog_name'] = request.form['blogname']
@@ -246,12 +246,14 @@ def reload_markdown():
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
 
+            file_basename = os.path.basename(file)
+
             try:
                 tags, content = content.split('---\n')
                 tags = yaml.safe_load(tags)
 
-            except Exception as error:
-                flash(file + ': ' + str(error), 'error')
+            except yaml.YAMLError as err:
+                flash(file + ': ' + str(err), 'error')
                 tags = []
                 content = ''
 
@@ -277,12 +279,12 @@ def reload_markdown():
                          tags['created'])
                         )
 
-                except Exception as error:
-                    flash(file + ': missing ' + str(error), 'error')
+                except ValueError as err:
+                    flash(file_basename + ': missing ' + err)
 
                 else:
                     db.commit()
-                    flash('Loaded: ' + file, 'info')
+                    flash('Loaded: ' + file_basename, 'info')
 
     reorder_posts()
 
