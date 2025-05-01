@@ -1,9 +1,12 @@
-from flask import Blueprint, flash, current_app as app
-from configparser import ConfigParser
-from werkzeug.security import generate_password_hash
-from app.db import get_db
+""" blog settings.py """
+
 import os
 import random
+from configparser import ConfigParser
+from flask import Blueprint, flash, current_app as app
+from werkzeug.security import generate_password_hash
+from app.db import get_db
+
 
 bp = Blueprint('settings', __name__)
 
@@ -33,19 +36,17 @@ def account_reset(settings):
 
     set_settings(settings)
 
-    return None
 
-
-def get_settings(settings_file='instance/settings.ini'):
+def get_settings(settings_file='settings.ini'):
     """store blog settings if exists, create if not"""
 
     settings = ConfigParser()
-    settings.read(os.path.join(app.instance_path, 'settings.ini'))
+    settings.read(os.path.join(app.instance_path, settings_file))
 
     # check if password reset is set
     pw = settings.get('admin_reset', 'password')
     if not len(pw) == 102 \
-            and not pw == 'new_account_password':
+            and pw != 'new_account_password':
         account_reset(settings)
 
     # add settings section to global flask config
@@ -61,31 +62,32 @@ def get_settings(settings_file='instance/settings.ini'):
     return settings
 
 
-def set_settings(settings, settings_file='instance/settings.ini'):
+def set_settings(settings, settings_file='settings.ini'):
     """write all to the settings file"""
 
     error = None
 
     try:
         app.config['register'] = settings['settings'].getboolean('register')
-    except Exception:
-        flash('Enable Register must be True or False', 'error')
+    except ValueError as err:
+        flash('Enable Register must be True or False: ' + str(err), 'error')
         error = True
 
     try:
         app.config['use_copy_date_start'] = settings['settings'].getboolean('use_copy_date_start')
-    except Exception:
-        flash('Use Copyright Start Date must be True or False', 'error')
+    except ValueError as err:
+        flash('Use Copyright Start Date must be True or False: ' + str(err), 'error')
         error = True
 
+    mouseover_enable_status = settings['settings'].getboolean('usericon_mouseover_enable')
     try:
-        app.config['usericon_mouseover_enable'] = settings['settings'].getboolean('usericon_mouseover_enable')
-    except Exception:
-        flash('User Icon Mouseover must be True or False', 'error')
+        app.config['usericon_mouseover_enable'] = mouseover_enable_status
+    except ValueError as err:
+        flash('User Icon Mouseover must be True or False:' + str(err), 'error')
         error = True
 
     if error is True:
         return
 
-    with open(os.path.join(app.instance_path, 'settings.ini'), 'w') as setting:
+    with open(os.path.join(app.instance_path, settings_file), 'w', encoding='utf-8') as setting:
         settings.write(setting)
