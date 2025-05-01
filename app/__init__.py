@@ -69,10 +69,18 @@ def create_app(test_config=None):
     setting = settings['settings']
 
     for key, value in setting.items():
-        app.config[key] = value
-    app.config['register'] = setting.getboolean('register')
-    app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
-    app.config['usericon_mouseover_enable'] = setting.getboolean('usericon_mouseover_enable')
+        if key == 'register':
+            app.config['register'] = setting.getboolean('register')
+        elif key == 'use_copy_date_start':
+            app.config['use_copy_date_start'] = setting.getboolean('use_copy_date_start')
+        elif key == 'usericon_mouseover_enable':
+            mouseover_enable_status = settings['settings'].getboolean('usericon_mouseover_enable')
+            app.config['usericon_mouseover_enable'] = mouseover_enable_status
+        else:
+            app.config[key] = value
+
+
+
 
     # back to imports
     from . import db
