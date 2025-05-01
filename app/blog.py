@@ -211,7 +211,7 @@ def settings():
         setting['copy_date_start'] = request.form['copy_date_start']
         setting['copy_date_end'] = request.form['copy_date_end']
 
-        set_settings(settings)
+        set_settings(s)
 
         error = None
             # error tests
