@@ -3,11 +3,11 @@
 name: ci
 
 on:
-  pull_requests:
+  pull_request:
     branches: [$default-branch]
 
 jobs:
-  lint:
+  style:
     name: Pylint
     runs-on: ubuntu-latest
 

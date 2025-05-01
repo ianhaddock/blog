@@ -12,6 +12,7 @@ Lightweight blog app used on my site, [ianhaddock.com][1].
 * Flask
 * sqlite3
 * Markdown
+* Pylint
 
 ## Setup
 Run the docker image:
