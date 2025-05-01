@@ -170,7 +170,7 @@ def update(post_id):
                 (title, body, post_id)
                 )
             db.commit()
-            return redirect(url_for('blog.index'), post_id)
+            return redirect(url_for('blog.index', post_id=post_id))
 
     return render_template('blog/update.html', post=post, pano=pano())
 
