@@ -1,11 +1,14 @@
+""" blog db.py """
+
 import sqlite3
-import glob
-import yaml
+#import glob
+#import yaml
 import click
 from flask import current_app, g
 
 
 def get_db():
+    """ return existing or create new sqlite db """
     if 'db' not in g:
         g.db = sqlite3.connect(
                 current_app.config['DATABASE'],
@@ -17,13 +20,15 @@ def get_db():
 
 
 def close_db(e=None):
-    db = g.pop('db', None)
+    """ close existing db """
+    db = g.pop('db', e)
 
     if db is not None:
         db.close()
 
 
 def init_db():
+    """ init a new db instance """
     db = get_db()
 
     with current_app.open_resource('schema.sql') as f:
@@ -38,17 +43,19 @@ def init_db_command():
 
 
 def init_app(app):
+    """ init a new app instance """
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
 #    if not
 
+
 def load_db(path='markdown/*.md'):
-    # load content from markdown files
-    pass
+    """ placeholder: load content from markdown files """
+    print(path)
 
 
 def insert_demo_post():
-    # generate welcome post
+    """ generate welcome post """
     title = "Welcome to this Blog"
     body = "This is a sample __markdown__ *blog* post. You can edit, delete,\
  or rewrite as you like."
@@ -65,23 +72,25 @@ def insert_demo_post():
 
 
 def get_user_ids():
+    """ return user ids from db """
     db = get_db()
     return db.execute('SELECT ID FROM USER;').fetchall()
 
 
 def get_titles():
     """pulls title information for the right side bar"""
-    table = get_db().execute(
-            'SELECT p.id, title, created, author_id, username'
-            ' FROM post p JOIN user u ON p.author_id = u.id'
-            ' ORDER BY created DESC'
-            ).fetchall()
 
-    return (table)
+    table = get_db().execute(
+        'SELECT p.id, title, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' ORDER BY created DESC'
+        ).fetchall()
+
+    return table
 
 
 def reorder_posts():
-    # create tmp table with null ids and insert posts to reorder
+    """ create tmp table with null ids and insert posts to reorder """
     db = get_db()
     db.execute('CREATE TEMPORARY TABLE tmp AS SELECT * FROM post ORDER BY'
                ' datetime(created) ASC')
@@ -101,7 +110,7 @@ def reorder_posts():
 
 
 def drop_posts():
-    # reset posts table
+    """ reset posts table """
     db = get_db()
     db.execute('DROP TABLE post')
     db.execute('CREATE TABLE post ('
