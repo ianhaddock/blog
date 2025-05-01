@@ -36,7 +36,7 @@
                         </div>
 
                         {% if g.user['id'] == post['author_id'] %}
-                            <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+                            <a class="action" href="{{ url_for('blog.update', post_id=post['id']) }}">Edit</a>
                         {% endif %}
                     </header>
 
@@ -44,7 +44,7 @@
                         <p class="body">{{ post['body'] | markdown  }}</p>
                     {% else %}
                         <p class="body">{{ next_post | markdown }}
-                        <div class="continue" align="center"><a href="{{ url_for('blog.index', id=post['id']) }}">[continue reading]</a></div>
+                        <div class="continue" align="center"><a href="{{ url_for('blog.index', post_id=post['id']) }}">[continue reading]</a></div>
                         </p>
                      {% endif %}
 
@@ -70,7 +70,7 @@
             {% for post in titles %}
             <div class="about">
                 <p>
-                <a class="action" href="{{ url_for('blog.index', id=post['id']) }}">{{ post['title'] }}</a><br>
+                <a class="action" href="{{ url_for('blog.index', post_id=post['id']) }}">{{ post['title'] }}</a><br>
                 {{ post['created'].strftime('%Y-%m-%d') }}
                 </p>
             </div>

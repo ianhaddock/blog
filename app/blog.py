@@ -36,8 +36,8 @@ bp = Blueprint('blog', __name__)
 
 
 @bp.route('/')
-@bp.route('/<int:id>')
-def index(post_id=int | None):
+@bp.route('/<int:post_id>')
+def index(post_id=None):
     """presents newest post in long form, the next most recent suggested
     below, with a list of all posts on the right"""
 
@@ -147,7 +147,7 @@ def get_post(post_id, check_author=True):
     return post
 
 
-@bp.route('/<int:id>/update', methods=('GET', 'POST'))
+@bp.route('/<int:post_id>/update', methods=('GET', 'POST'))
 @login_required
 def update(post_id):
     """ edit an existing post and update """
@@ -175,7 +175,7 @@ def update(post_id):
     return render_template('blog/update.html', post=post, pano=pano())
 
 
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/<int:post_id>/delete', methods=('POST',))
 @login_required
 def delete(post_id):
     """ delete a post """
