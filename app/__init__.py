@@ -6,6 +6,7 @@ from flask import Flask
 from flaskext.markdown import Markdown
 
 
+# Disable import outside toplevel warning - pylint: disable=C0415
 def create_app(test_config=None):
     """ create and configure the app """
     app = Flask(__name__, instance_relative_config=True)
@@ -59,7 +60,8 @@ def create_app(test_config=None):
                 'username': 'account_name_to_reset',
                 'password': 'new_account_password'
                 }
-        settings.write(open(app.config.settings_file, 'w'))
+        with open(app.config.settings_file, 'w', encoding='utf-8') as f:
+            settings.write(f)
 
     settings.read(app.config.settings_file)
 
