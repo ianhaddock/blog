@@ -1,10 +1,12 @@
+""" test_auth.py """
+
 import pytest
 from flask import g, session
 from app.db import get_db
 
 
 def test_register(client, app):
-
+    """ test user registration """
     assert client.get('/auth/register').status_code == 200
 
     response = client.post(
@@ -20,6 +22,7 @@ def test_register(client, app):
 
 
 def test_register_off(client, app):
+    """ test disable registration """
     app.config['register'] = False
     assert client.get('/auth/register').status_code == 302
 
@@ -31,6 +34,7 @@ def test_register_off(client, app):
     ('test', 'test', 'test@example.com', b'already registered'),
     ))
 def test_register_validate_input(client, username, password, email, message):
+    """ test registration is valid """
     response = client.post(
             '/auth/register',
             data={'username': username, 'password': password, 'email': email}
@@ -39,6 +43,7 @@ def test_register_validate_input(client, username, password, email, message):
 
 
 def test_login(client, auth):
+    """ test login is valid """
     assert client.get('/auth/login').status_code == 200
     response = auth.login()
     assert response.headers["Location"] == "/"
@@ -54,11 +59,13 @@ def test_login(client, auth):
     ('test', 'a', b'Incorrect username or password.'),
     ))
 def test_login_validate_input(auth, username, password, message):
+    """ test login validate input """
     response = auth.login(username, password)
     assert message in response.data
 
 
 def test_logout(client, auth):
+    """ test logout """
     auth.login()
 
     with client:

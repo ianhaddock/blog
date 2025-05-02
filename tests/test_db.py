@@ -1,11 +1,19 @@
+""" test_db.py """
+
 import sqlite3
-
 import pytest
-
 from app.db import get_db
 
 
+class Recorder(object):
+    # disable too few public methods - pylint: disable=R0903
+    # disable can be removed from bases - pylint: disable=R0205
+    """ docstring """
+    called = False
+
+
 def test_get_close_db(app):
+    """ get close db """
     with app.app_context():
         db = get_db()
         assert db is get_db()
@@ -17,9 +25,7 @@ def test_get_close_db(app):
 
 
 def test_init_db_command(runner, monkeypatch):
-    class Recorder(object):
-        called = False
-
+    """ init db """
     def fake_init_db():
         Recorder.called = True
 
