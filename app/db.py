@@ -1,9 +1,6 @@
 """blog db.py"""
 
 import sqlite3
-
-# import glob
-# import yaml
 import click
 from flask import current_app, g
 
@@ -48,30 +45,9 @@ def init_app(app):
     app.cli.add_command(init_db_command)
 
 
-#    if not
-
-
 def load_db(path="markdown/*.md"):
     """placeholder: load content from markdown files"""
     print(path)
-
-
-def insert_demo_post():
-    # disable implicit str concat - pylint: disable=W1404
-    """generate welcome post"""
-    title = "Welcome to this Blog"
-    body = "This is a sample __markdown__ *blog* post. You can edit, delete,\
- or rewrite as you like."
-    # Alternatively you can add markdown files\
-    # to the static/markdown folderi. Clicking the the reload button will clear old\
-    # entires and load the markdown files into the blog db."
-
-    db = get_db()
-    db.execute(
-        "INSERT INTO post (title, body, author_id)" " VALUES (?, ?, ?)",
-        (title, body, 1),
-    )
-    db.commit()
 
 
 def get_user_ids():
