@@ -21,6 +21,7 @@ bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 @bp.route("/register", methods=("GET", "POST"))
 def register():
+    # disable implicit str concat - pylint: disable=W1404
     """user registration"""
 
     if not app.config["register"]:

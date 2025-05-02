@@ -57,6 +57,7 @@ def load_db(path="markdown/*.md"):
 
 
 def insert_demo_post():
+    # disable implicit str concat - pylint: disable=W1404
     """generate welcome post"""
     title = "Welcome to this Blog"
     body = "This is a sample __markdown__ *blog* post. You can edit, delete,\
