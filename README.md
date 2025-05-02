@@ -1,5 +1,5 @@
 [![.github/workflows/ci.yml](https://github.com/ianhaddock/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/ci.yml)
-[![Docker Image CI](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/docker-image-ci.yml)
+[![.github/workflows/cd.yml](https://github.com/ianhaddock/blog/actions/workflows/cd.yml/badge.svg)](https://github.com/ianhaddock/blog/actions/workflows/cd.yml)
 
 # Blog
 Lightweight blog app used on my site, [ianhaddock.com][1].

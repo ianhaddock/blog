@@ -1,4 +1,6 @@
-name: Docker Image CI
+# CD Github Action
+---
+name: cd
 
 on:
   push:
@@ -14,7 +16,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
