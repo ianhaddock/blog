@@ -11,6 +11,7 @@ from flask import (
     g,
     redirect,
     render_template,
+    send_from_directory,
     request,
     url_for,
 )
@@ -205,7 +206,13 @@ def delete(post_id):
 @bp.route("/version", methods=("GET",))
 def version():
     """show build version"""
-    return render_template("version.html")
+    return send_from_directory(app.static_folder, "version.txt")
+
+
+@bp.route("/robots.txt", methods=("GET",))
+def static_from_root():
+    """display static files"""
+    return send_from_directory(app.static_folder, request.path[1:])
 
 
 @bp.route("/settings", methods=("GET", "POST"))
