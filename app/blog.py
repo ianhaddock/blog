@@ -202,6 +202,12 @@ def delete(post_id):
     return redirect(url_for("blog.index"))
 
 
+@bp.route("/version", methods=("GET",))
+def version():
+    """show build version"""
+    return render_template("version.html")
+
+
 @bp.route("/settings", methods=("GET", "POST"))
 @login_required
 def settings():
