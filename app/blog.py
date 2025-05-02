@@ -5,7 +5,15 @@ from datetime import datetime
 import glob
 import yaml
 from flask import current_app as app
-from flask import Blueprint, flash, g, redirect, render_template, request, url_for
+from flask import (
+    Blueprint,
+    flash,
+    g,
+    redirect,
+    render_template,
+    request,
+    url_for,
+)
 from werkzeug.exceptions import abort
 from app.auth import login_required
 from app.db import (
@@ -15,9 +23,12 @@ from app.db import (
     load_db,
     get_user_ids,
     get_titles,
-    insert_demo_post,
 )
-from app.settings import pano, set_settings, get_settings
+from app.settings import (
+    pano,
+    set_settings,
+    get_settings,
+)
 
 
 bp = Blueprint("blog", __name__)
@@ -38,9 +49,9 @@ def index(post_id=None):
         app.config["register"] = True
         return redirect(url_for("auth.register"))
 
-    # generate welcome post if post count is zero or markdown folder is empty
+    # generate welcome post if post count is zero
     if len(titles) == 0:
-        insert_demo_post()
+        reload_markdown()
         return redirect(url_for("blog.index"))
 
     # show latest post if id is invalid
@@ -287,7 +298,7 @@ def reload_markdown():
 
                 else:
                     db.commit()
-                    flash("Loaded: " + file_basename, "info")
+                    # flash("Loaded: " + file_basename, "info")
 
     reorder_posts()
 
