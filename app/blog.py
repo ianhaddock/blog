@@ -71,6 +71,7 @@ def index(post_id=None):
 @bp.route("/create", methods=("GET", "POST"))
 @login_required
 def create():
+    # disable implicit str concat - pylint: disable=W1404
     """create new entry page"""
     if request.method == "POST":
         title = request.form["title"]
