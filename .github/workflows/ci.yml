@@ -28,5 +28,8 @@ jobs:
       - name: install pylint
         run: pip install pylint
 
-      - name: analize with pylint
+      - name: analize tests with pylint
+        run: pylint $(git ls-files tests/*.py)
+
+      - name: analize app with pylint
         run: pylint $(git ls-files app/*.py)
