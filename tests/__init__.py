@@ -1,1 +1,1 @@
-""" pytest __init__.py """
+"""pytest __init__.py"""

@@ -14,7 +14,8 @@ Lightweight blog app used on my site, [ianhaddock.com][1].
 * sqlite3
 * Markdown
 * Docker
-* Pylint
+* Pylint code analysis
+* Black code formatter
 
 ## Setup
 Docker compose file included:
