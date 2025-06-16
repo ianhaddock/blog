@@ -57,7 +57,7 @@ $ waitress-serve --port=8080 --call app:create_app
 ```
 
 ## Sources
-Started with a [tutorial on Flask][1] and decided to continue.
+Started with a [tutorial on Flask][2] and decided to continue.
 
 
 [1]: https://ianhaddock.com
