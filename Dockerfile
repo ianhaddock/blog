@@ -6,18 +6,20 @@ RUN apt-get update -y && apt-get clean
 
 WORKDIR /blog
 
+COPY ./requirements.txt .
+
+RUN pip install --no-cache-dir waitress -r requirements.txt
+
 COPY ./app ./app
 
 COPY ./setup.py .
 
-COPY ./start_blog.sh .
+COPY ./init_db.sh .
 
-COPY ./requirements.txt .
+RUN chmod +x ./init_db.sh
 
-RUN chmod +x ./start_blog.sh
-
-RUN pip install --no-cache-dir waitress -r requirements.txt
+RUN ./init_db.sh
 
 EXPOSE 5000
 
-CMD ["./start_blog.sh"]
+CMD ["waitress-serve", "--port=5000", "--threads=1", "--call", "app:create_app"]
