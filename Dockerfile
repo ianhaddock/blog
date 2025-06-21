@@ -1,6 +1,8 @@
 # Dockerfile
 
-FROM docker.io/library/python:3.8
+FROM docker.io/library/python:3.13-slim-bookworm
+
+RUN apt-get update -y && apt-get clean
 
 WORKDIR /blog
 
