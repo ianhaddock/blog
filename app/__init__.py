@@ -30,7 +30,7 @@ def create_app(test_config=None):
     try:
         os.makedirs(app.instance_path, exist_ok=True)
     except OSError as err:
-        raise Exception(f"Can't write to instance path: {err}")
+        raise OSError(f"Can't write to instance path: {err}") from err
 
     # import or create settings file
     settings = ConfigParser()
