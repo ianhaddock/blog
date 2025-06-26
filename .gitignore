@@ -18,6 +18,7 @@ build/
 
 # tests
 toys/
+reference/
 
 # my blog files
 dist/
